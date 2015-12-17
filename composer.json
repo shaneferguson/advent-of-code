@@ -1,7 +1,8 @@
 {
     "require": {
         "phpspec/phpspec": "^2.4",
-        "phpunit/phpunit": "^4.8"
+        "phpunit/phpunit": "^4.8",
+        "symfony/console": "^3.0"
     },
     "autoload": {
         "psr-4": {
