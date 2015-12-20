@@ -37,4 +37,9 @@ class InstructionParserSpec extends ObjectBehavior
         $elevator->goDown()->shouldHaveBeenCalledTimes(4);
     }
 
+    function it_starts_at_instruction_zero(Elevator $elevator)
+    {
+        $this->instructionCount()->shouldBe(0);
+    }
+
 }
