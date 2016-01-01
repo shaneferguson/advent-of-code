@@ -39,7 +39,13 @@ class InstructionParserSpec extends ObjectBehavior
 
     function it_starts_at_instruction_zero(Elevator $elevator)
     {
-        $this->instructionCount()->shouldBe(0);
+        $this->getInstructionCount()->shouldBe(0);
+    }
+
+    public function it_will_track_how_many_instruction_it_has_seen()
+    {
+        $this->parseInstructions('()(()((()(');
+        $this->getInstructionCount()->shouldBe(10);
     }
 
 }

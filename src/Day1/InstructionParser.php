@@ -9,6 +9,8 @@ class InstructionParser
      */
     private $elevator;
 
+    private $instructionCount = 0;
+
     /**
      * InstructionParser constructor.
      *
@@ -23,10 +25,17 @@ class InstructionParser
     {
         foreach(str_split($instructions) as $instruction) {
             if ($instruction == '(') {
+                $this->instructionCount++;
                 $this->elevator->goUp();
             } elseif ($instruction == ')') {
+                $this->instructionCount++;
                 $this->elevator->goDown();
             }
         }
+    }
+
+    public function getInstructionCount()
+    {
+        return $this->instructionCount;
     }
 }
