@@ -6,4 +6,5 @@ use Symfony\Component\Console\Application;
 $application = new Application();
 $application->add(new Day1\Puzzle1Command());
 $application->add(new Day1\Puzzle2Command());
+$application->add(new Day2\Puzzle1Command());
 $application->run();
