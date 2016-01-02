@@ -8,6 +8,7 @@ use Prophecy\Argument;
 
 class BoxSpec extends ObjectBehavior
 {
+
     function it_is_initializable()
     {
         $this->shouldHaveType('Day2\Box');
@@ -47,5 +48,16 @@ class BoxSpec extends ObjectBehavior
     {
         $this->beConstructedWith('1x1x10');
         $this->getWrappingPaperArea()->shouldBe(43);
+    }
+
+    public function it_can_calculate_ribbon_length_for_box()
+    {
+        $this->getRibbonLength()->shouldBe(34);
+    }
+
+    public function it_can_calculate_ribbon_for_skinny_box()
+    {
+        $this->beConstructedWith('1x1x10');
+        $this->getRibbonLength()->shouldBe(14);
     }
 }

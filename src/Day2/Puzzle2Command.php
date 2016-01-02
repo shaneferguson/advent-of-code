@@ -6,13 +6,13 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Puzzle1Command extends Command
+class Puzzle2Command extends Command
 {
     protected function configure()
     {
         $this
-            ->setName('day2:puzzle1')
-            ->setDescription('Day 2, puzzle 1');
+            ->setName('day2:puzzle2')
+            ->setDescription('Day 2, puzzle 2');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -26,6 +26,6 @@ class Puzzle1Command extends Command
             $boxCollection->addBox($box);
         }
 
-        $output->writeln('Answer: ' . $boxCollection->getTotalWrappingArea());
+        $output->writeln('Answer: ' . $boxCollection->getTotalRibbonLength());
     }
 }

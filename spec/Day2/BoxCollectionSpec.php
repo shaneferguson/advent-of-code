@@ -2,7 +2,6 @@
 
 namespace spec\Day2;
 
-use Day2\Box;
 use Day2\BoxInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -37,5 +36,21 @@ class BoxCollectionSpec extends ObjectBehavior
         $this->addBox($box2);
 
         $this->getTotalWrappingArea()->shouldBe($boxArea1 + $boxArea2);
+    }
+
+    function it_can_get_total_ribbon_length(
+        BoxInterface $box1,
+        BoxInterface $box2
+    ) {
+        $boxPerimeter1 = 78;
+        $boxPerimeter2 = 15;
+
+        $box1->getRibbonLength()->willReturn($boxPerimeter1);
+        $box2->getRibbonLength()->willReturn($boxPerimeter2);
+
+        $this->addBox($box1);
+        $this->addBox($box2);
+
+        $this->getTotalRibbonLength()->shouldBe($boxPerimeter1 + $boxPerimeter2);
     }
 }

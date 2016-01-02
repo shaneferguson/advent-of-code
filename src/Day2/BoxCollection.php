@@ -4,7 +4,7 @@ namespace Day2;
 
 class BoxCollection
 {
-
+    /** @var BoxInterface[] */
     private $boxes;
 
     public function addBox(BoxInterface $box)
@@ -30,5 +30,17 @@ class BoxCollection
         }
 
         return $totalArea;
+    }
+
+    public function getTotalRibbonLength()
+    {
+        $total = 0;
+
+
+        foreach ($this->boxes as $box) {
+            $total += $box->getRibbonLength();
+        }
+
+        return $total;
     }
 }

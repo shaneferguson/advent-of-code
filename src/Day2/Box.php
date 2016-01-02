@@ -4,6 +4,7 @@ namespace Day2;
 
 class Box implements BoxInterface
 {
+
     private $height;
     private $width;
     private $length;
@@ -14,6 +15,32 @@ class Box implements BoxInterface
         $this->height = (int) $matches[1];
         $this->width = (int) $matches[2];
         $this->length = (int) $matches[3];
+    }
+
+    public function getWrappingPaperArea()
+    {
+        $areas = [
+            $this->getLidArea(),
+            $this->getSideArea(),
+            $this->getFaceArea()
+        ];
+
+        $surfaceArea = 2 * array_sum($areas) + min($areas);
+
+        return $surfaceArea;
+    }
+
+    public function getRibbonLength()
+    {
+        $perimeters = [
+            $this->getLidPerimeter(),
+            $this->getSidePerimeter(),
+            $this->getFacePerimeter()
+        ];
+
+        $total = min($perimeters) + $this->getVolume();
+
+        return $total;
     }
 
     /**
@@ -40,32 +67,38 @@ class Box implements BoxInterface
         return $this->length;
     }
 
-    public function getLidArea()
+    private function getLidArea()
     {
         return $this->width * $this->length;
     }
 
-    public function getSideArea()
+    private function getSideArea()
     {
         return $this->height * $this->length;
     }
 
-    public function getFaceArea()
+    private function getFaceArea()
     {
         return $this->width * $this->height;
     }
 
-    public function getWrappingPaperArea()
+    private function getVolume()
     {
-        $areas = [
-            $this->getLidArea(),
-            $this->getSideArea(),
-            $this->getFaceArea()
-        ];
-
-        $surfaceArea = 2 * array_sum($areas) + min($areas);
-
-        return $surfaceArea;
+        return $this->width * $this->height * $this->length;
     }
 
+    private function getLidPerimeter()
+    {
+        return 2 * ($this->width + $this->height);
+    }
+
+    private function getSidePerimeter()
+    {
+        return 2 * ($this->height + $this->length);
+    }
+
+    private function getFacePerimeter()
+    {
+        return 2 * ($this->width + $this->length);
+    }
 }
